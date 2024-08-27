@@ -22,14 +22,18 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
     private int age;
 
-    public Person(String name, int age) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new InvalidPersonException("Name cannot be null or empty");
+    public Person(String firstName, String lastName, String email,  int age) {
+        if (firstName == null || lastName == null || email == null ) {
+            throw new InvalidPersonException("Fields should not be null");
         }
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.age = age;
     }
 }

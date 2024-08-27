@@ -31,7 +31,9 @@ public class PersonService {
 
     public Person updatePerson(Long id, Person personDetails){
         Person person = personRepository.findById(id).orElseThrow();
-        person.setName(personDetails.getName());
+        person.setFirstName(personDetails.getFirstName());
+        person.setLastName(personDetails.getLastName());
+        person.setEmail(personDetails.getEmail());
         person.setAge(personDetails.getAge());
         return personRepository.save(person);
     }

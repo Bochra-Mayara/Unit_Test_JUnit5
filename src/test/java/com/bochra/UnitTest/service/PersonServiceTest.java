@@ -53,10 +53,13 @@ public class PersonServiceTest {
     }
     @Test
     public void shouldSavaPerson() {
-        Person personToSave = new Person("John Doe", 30);
+        Person personToSave = new Person("bochra", "mayara", "bochramayara@gmail.com", 23);
         Person savedPerson = personService.savePerson(personToSave);
         assertNotNull(savedPerson);
-        assertNotNull(savedPerson.getName(), personToSave.getName());
+        assertEquals(savedPerson.getFirstName(), personToSave.getFirstName());
+        assertEquals(savedPerson.getLastName(), personToSave.getLastName());
+        assertEquals(savedPerson.getEmail(), personToSave.getEmail());
+        assertEquals(savedPerson.getAge(), personToSave.getAge());
 
 
     }
@@ -70,8 +73,8 @@ public class PersonServiceTest {
 
         // Act & Assert
         var exp = assertThrows(InvalidPersonException.class, () ->
-            new Person(null, 30));
-        assertEquals("Name cannot be null or empty", exp.getMessage());
+            new Person("aicha", null,null, 21));
+        assertEquals("Fields should not be null", exp.getMessage());
 
 
     }
