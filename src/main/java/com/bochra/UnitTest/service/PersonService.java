@@ -17,19 +17,20 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> getPersonById( Long id){
+    public Optional<Person> getPersonById( Integer id){
         return personRepository.findById(id);
     }
 
     public  Person savePerson(Person person){
         return  personRepository.save(person);
+
     }
 
-    public void deletePerson(Long id){
+    public void deletePerson( Integer id){
         personRepository.deleteById(id);
     }
 
-    public Person updatePerson(Long id, Person personDetails){
+    public Person updatePerson(Integer id, Person personDetails){
         Person person = personRepository.findById(id).orElseThrow();
         person.setFirstName(personDetails.getFirstName());
         person.setLastName(personDetails.getLastName());
